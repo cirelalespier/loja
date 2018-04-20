@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Filme } from '../filme';
+import { FilmeService } from '../filme.service';
 
 @Component({
   selector: 'app-lista',
@@ -8,32 +9,23 @@ import { Filme } from '../filme';
 })
 export class ListaComponent implements OnInit {
 
-  listaFilmes: Filme[] = [{
-    "titulo": "Batman Begins",
-    "ano": "2005",
-    "id": "tt0372784",
-    "tipo": "movie",
-    "poster": "https://ia.media-imdb.com/images/M/MV5BYzc4ODgyZmYtMGFkZC00NGQyLWJiMDItMmFmNjJiZjcxYzVmXkEyXkFqcGdeQXVyNDYyMDk5MTU@._V1_SX300.jpg"
-},
-{
-    "titulo": "Batman v Superman: Dawn of Justice",
-    "ano": "2016",
-    "id": "tt2975590",
-    "tipo": "movie",
-    "poster": "https://ia.media-imdb.com/images/M/MV5BYThjYzcyYzItNTVjNy00NDk0LTgwMWQtYjMwNmNlNWJhMzMyXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg"
-},
-{
-    "titulo": "Batman",
-    "ano": "1989",
-    "id": "tt0096895",
-    "tipo": "movie",
-    "poster": "https://ia.media-imdb.com/images/M/MV5BMTYwNjAyODIyMF5BMl5BanBnXkFtZTYwNDMwMDk2._V1_SX300.jpg"
-}];
+  listaFilmes: Filme[] = [];
 
-  constructor() { }
+  constructor(private filmeService: FilmeService) { }
 
   ngOnInit() {
-  }
+    this.filmeService.getFilmes().subscribe(data => { data['Search'].map(filme => { let film = {
+      'id': filme.imdbID, 
+      'titulo': filme.Title,
+      'ano': filme.Year,
+      'tipo': filme.Type,
+      'poster': filme.Poster 
+    } 
+    
+    this.listaFilmes.push(film)
+    }); 
+  });
+}
 
   apagaFilme(filme: Filme): void {
     this.listaFilmes = this.listaFilmes.filter(item => item.id != filme.id)  
