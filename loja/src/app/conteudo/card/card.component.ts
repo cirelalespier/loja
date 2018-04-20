@@ -17,6 +17,7 @@ export class CardComponent{
   public apagaCard(): void {
     
     this.apaga.emit(this.filme);
+    
   }
 
 }

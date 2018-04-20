@@ -2,5 +2,5 @@
     <h1 class="display-4">Nossa lista</h1>
     <p class="lead">Atividade - curso angular</p>
     <hr class="my-4">
-    <app-card [filme]="filme" *ngFor="let filme of listaFilmes"></app-card>
+    <app-card (apaga)="apagaFilme($event)" [filme]="filme" *ngFor="let filme of listaFilmes"></app-card>
 </div>

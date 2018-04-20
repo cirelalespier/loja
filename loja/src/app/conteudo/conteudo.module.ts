@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ListaComponent } from './lista/lista.component';
 import { CardComponent } from './card/card.component';
+import { FilmeService } from './filme.service';
 
 @NgModule({
   imports: [
@@ -13,6 +14,7 @@ import { CardComponent } from './card/card.component';
   ],
   exports:[
     ListaComponent
-  ]
+  ],
+  providers: [FilmeService]
 })
 export class ConteudoModule { }
