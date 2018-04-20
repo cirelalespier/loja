@@ -1,0 +1,2 @@
+# loja
+exercicio angular
