@@ -6,14 +6,16 @@ import { PrincipalModule } from './principal/principal.module';
 import { ConteudoModule } from './conteudo/conteudo.module';
 
 
+
 @NgModule({
   declarations: [
-    AppComponent,            
+    AppComponent
+                
   ],
   imports: [
     BrowserModule,
     PrincipalModule,
-    
+    ConteudoModule
   ],
   providers: [],
   bootstrap: [AppComponent]
